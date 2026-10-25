@@ -1,0 +1,15 @@
+{#- Structured data (schema.org) for search engines and AI assistants. Everything comes from the data files, so it cannot drift from the page text.
+    The firm is an Organization, deliberately not a FinancialService: it trades its own capital and serves no clients.
+    sameAs lists only the footer links that have a real address. -#}
+{%- set same = [] -%}
+{%- for link in links %}{% if link.href != "#" %}{% set ignored = same.push(link.href) %}{% endif %}{% endfor -%}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","@id":"{{ site.url }}/#organization","name":{{ site.name | dump | safe }},"url":"{{ site.url }}/","description":{{ site.description | dump | safe }},"logo":"{{ site.url }}/assets/img/apple-touch-icon.png","knowsAbout":[{% for o in offers %}{{ o.title | dump | safe }}{% if not loop.last %},{% endif %}{% endfor %}]{% if same.length %},"sameAs":{{ same | dump | safe }}{% endif %}},
+{"@type":"WebSite","@id":"{{ site.url }}/#website","url":"{{ site.url }}/","name":{{ site.name | dump | safe }},"publisher":{"@id":"{{ site.url }}/#organization"}}{% if item %},
+{"@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":{{ site.name | dump | safe }},"item":"{{ site.url }}/"},
+{"@type":"ListItem","position":2,"name":{{ sections[item.group].name | dump | safe }},"item":"{{ site.url }}/#{{ item.group }}"},
+{"@type":"ListItem","position":3,"name":{{ item.title | dump | safe }},"item":"{{ site.url }}{{ page.url }}"}]}{% endif %}
+]}
+</script>

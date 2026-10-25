@@ -1,0 +1,11 @@
+/* ---------- for visitors who prefer less motion: nothing slides, fades or loops ---------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .in{animation:none!important}
+  .hero::before{display:none}
+  .slot-video::before,.vert span,.vert svg,.btn-send.busy .arr{animation:none}
+  .hero-video{transition:none}
+  .vert span{color:rgba(255,255,255,.7);background:none}
+  .flip,.face,.flip-btn,.pic *,.offer,.person,.btn-ghost,.btn-ghost::before,.btn-ghost .arr,.brand-sym,.brand-sym i,.navitem,.navitem .rest,.navitem .rest>span{transition:none!important}
+  .bio,.more-btn,.goc,.field label,.field .bar,.field .ok,.field .err,.form-status,.ph-bg,.person-line,.case>.slot,.case .glass,.case .glass-top,.next .arrow{transition:none}
+}
