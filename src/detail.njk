@@ -1,0 +1,87 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: details
+  size: 1
+  alias: item
+  addAllPagesToCollections: true   # without this only the first page of the pagination would reach the sitemap collection
+permalink: "/{{ sections[item.group].path }}/{{ item.slug }}/"
+tags: sitemap
+eleventyComputed:
+  group: "{{ item.group }}"
+  title: "{{ item.title }} · Northbridge Capital"
+  description: "{{ item.desc }} Northbridge Capital is an independent proprietary trading firm that trades its own capital."
+---
+{% set section = sections[item.group] %}
+<section class="phero">
+  {%- if item.video %}
+  <img class="hero-poster" src="{{ ('cards/' + item.video + '-wide-poster.jpg') | media }}" alt="" width="1280" height="720" fetchpriority="high">
+  <video class="hero-video" src="{{ ('cards/' + item.video + '-wide.mp4') | media }}" autoplay muted loop playsinline aria-hidden="true" tabindex="-1"></video>
+  {%- else %}
+  <div class="slot slot-video slot-hero" data-label="Video · page hero background, full-bleed loop" aria-hidden="true"></div>
+  {%- endif %}
+  <div class="hero-shade"></div>
+  <div class="phero-foot wrap g12">
+    <div class="c c-1-9">
+      <nav class="crumbs xs caps" aria-label="Breadcrumb"><a href="/#{{ item.group }}">{{ section.name }}</a><span aria-hidden="true">/</span><span>{{ item.number | padStart }}</span></nav>
+      <h1 class="in d2">{{ item.title }}</h1>
+    </div>
+    <p class="c c-9-13 lede in d3">{{ item.desc }}</p>
+  </div>
+</section>
+
+<main id="main">
+
+<section class="band s-light">
+  <div class="wrap g12">
+    <h2 class="c c-1-4 xs caps mute">Overview</h2>
+    <div class="c c-4-12 prose">
+      <p class="lead">{{ item.intro }}</p>
+      <p class="more-detail">{{ item.detail }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="band s-dark">
+  <div class="wrap">
+    <header class="g12 sec-head"><h2 class="c c-full h2 opt b-085">In practice</h2></header>
+    <div class="points">
+      {%- for point in item.points %}
+      <div class="point"><span class="no xs">{{ loop.index | padStart }}</span><h3>{{ point.title }}</h3><p>{{ point.text }}</p></div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="band s-grey">
+  <div class="wrap">
+    <div class="pmedia">
+      {%- if item.feature %}
+      <video class="lazy-video" data-src="{{ ('cards/' + item.feature + '.mp4') | media }}" poster="{{ ('cards/' + item.feature + '-poster.jpg') | media }}" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+      {%- else %}
+      <div class="slot slot-video" data-label="Video · wide feature, 21:9 loop" aria-hidden="true"></div>
+      {%- endif %}
+      {%- if item.notes %}
+      <div class="pnotes">
+        {%- for note in item.notes %}
+        <div class="glass"><div class="glass-top xs caps"><span>{{ note.label }}</span></div><p class="glass-note">{{ note.text }}</p></div>
+        {%- endfor %}
+      </div>
+      {%- endif %}
+    </div>
+  </div>
+</section>
+
+<section class="band s-night">
+  <div class="wrap">
+    <a class="next" href="/{{ section.path }}/{{ item.next.slug }}/">
+      <div>
+        <div class="xs caps next-label">Next in {{ section.name | lower }}</div>
+        <h2 class="h2">{{ item.next.title }}</h2>
+      </div>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
+
+</main>

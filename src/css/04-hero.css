@@ -1,0 +1,29 @@
+/* ---------- home hero ---------- */
+.hero{position:relative;height:100vh;height:calc(100svh / var(--scale));min-height:560px;background:#000;overflow:hidden;color:#fff}
+/* the first frame is a still that would otherwise appear at full brightness in one step: a black veil lifts off it instead */
+.hero::before{content:"";position:absolute;inset:0;z-index:2;background:#000;pointer-events:none;animation:unveil 1.4s ease .1s both}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,.15) 30%,rgba(0,0,0,.2) 50%,rgba(0,0,0,.78))}
+.hero-foot,.phero-foot{position:absolute;inset:auto 0 0 0;z-index:3;padding-bottom:var(--gut);align-items:last baseline}
+.hero h1{font-size:clamp(56px,10.5vw,176px);line-height:.92;letter-spacing:-.045em}
+.hero-foot p{font-size:clamp(18px,1.5vw,21px);line-height:1.45;font-weight:300}
+/* tall square brackets around a whole block of text; they sit in the gutter, so the text stays on its grid line */
+.bracketed{position:relative}
+.bracketed::before,.bracketed::after{content:"";position:absolute;top:-.4em;bottom:-.4em;width:7px;border:1px solid currentColor}
+.bracketed::before{right:100%;margin-right:7px;border-right:0}
+.bracketed::after{left:100%;margin-left:7px;border-left:0}
+
+/* "Scroll to explore" cue on the right edge */
+.vert{position:absolute;right:calc(var(--gut)/2 - 8px);top:0;width:16px;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;z-index:3}
+.vert span{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;background:linear-gradient(180deg,rgba(255,255,255,.4) 0,rgba(255,255,255,.4) 38%,#fff 50%,rgba(255,255,255,.4) 62%,rgba(255,255,255,.4) 100%);background-size:100% 250%;background-clip:text;color:transparent;animation:shimmer 3s linear infinite}
+.vert svg{display:block;width:12px;height:20px;stroke:rgba(255,255,255,.85);fill:none;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;animation:bob 1.8s cubic-bezier(.45,0,.55,1) infinite}
+
+/* ---------- hero of the inner pages ---------- */
+.phero{position:relative;height:clamp(520px,72vh,780px);background:#000;overflow:hidden;color:#fff}
+/* the page headers sit over busier footage (code, numbers), so their dark layer is stronger than the home hero's */
+.phero .hero-shade{background:linear-gradient(180deg,rgba(0,0,0,.72),rgba(0,0,0,.5) 35%,rgba(0,0,0,.58) 60%,rgba(0,0,0,.86))}
+.phero h1{font-size:clamp(44px,8.4vw,136px);line-height:.95;letter-spacing:-.045em}
+.phero .lede{max-width:28em;font-size:clamp(18px,1.5vw,21px);line-height:1.45;font-weight:300}
+.lede-gap{margin-bottom:22px}
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:22px;color:rgba(255,255,255,.72)}
+.crumbs a{border-bottom:1px solid rgba(255,255,255,.4)}
+@media (hover:hover){.crumbs a:hover{color:#fff;border-color:#fff}}
