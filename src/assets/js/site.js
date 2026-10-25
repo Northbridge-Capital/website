@@ -2,6 +2,14 @@
 (() => {
   const setInert = (el, on) => el.toggleAttribute('inert', on);
 
+  // With a mouse, moving off a card closes it again. Touch has no hover (it stays tap to open, tap to close),
+  // and a keyboard user who is still inside the card is left alone.
+  const closeOnMouseLeave = (el, close) => el.addEventListener('pointerleave', (event) => {
+    if (event.pointerType !== 'mouse') return;
+    if (el.contains(document.activeElement) && document.activeElement.matches(':focus-visible')) return;
+    close();
+  });
+
   /* Videos load and play only when needed. The hero starts straight away; a video with a data-src waits until play() is called.
      Visitors who prefer less motion get the still poster frames and nothing plays. */
   const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -12,7 +20,7 @@
   };
   if (calm) document.querySelectorAll('video').forEach((video) => { video.removeAttribute('autoplay'); video.removeAttribute('src'); video.load(); }); // drops the download, the poster stays
 
-  /* 1. Things rise into place the first time they scroll into view.
+  /* Things rise into place the first time they scroll into view.
         The CSS hides them (only when the page has the .js class and the visitor allows motion);
         this adds .seen so the CSS can animate them in. */
   const items = document.querySelectorAll('.person, .case, .offer, .h2, .contact h2, .about, .foot .word');
@@ -25,13 +33,13 @@
   }, { threshold: 0.15 });
   items.forEach((el) => reveal.observe(el));
 
-  /* 1a. The hero video fades in over its still first frame once it is really playing. */
+  /* The hero video fades in over its still first frame once it is really playing. */
   document.querySelectorAll('.hero-video').forEach((video) => {
     const show = () => video.classList.add('is-playing');
     if (!video.paused && video.readyState > 2) show(); else video.addEventListener('playing', show, { once: true });
   });
 
-  /* 1b. Each section's content drifts up into place as the section scrolls in. This is timed (not tied to the scroll wheel),
+  /* Each section's content drifts up into place as the section scrolls in. This is timed (not tied to the scroll wheel),
          so it stays smooth however you scroll. It starts as soon as the top of the section is a little way into view. */
   const drift = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -42,14 +50,14 @@
   }, { rootMargin: '0px 0px -12% 0px' });
   document.querySelectorAll('main > .band:not(#what), .s-foot').forEach((el) => drift.observe(el));   // the section, not its padded content, so it starts as the edge appears
 
-  /* 2. The hero and the big section videos (the "What we do" background and the "Who we are" feature) play only while they are on screen,
-        so the phone or laptop never decodes video nobody can see. The section videos start loading a little before they scroll into view. */
+  /* The hero videos (home and page headers) and every lazy video (the case cards, "Who we are" and the feature videos) play only while they are on screen,
+        so the phone or laptop never decodes video nobody can see. Lazy videos start loading a little before they scroll into view. */
   document.querySelectorAll('.hero-video, .lazy-video').forEach((video) => {
     const margin = video.matches('.lazy-video') ? '200px' : '0px';
     new IntersectionObserver(([entry]) => (entry.isIntersecting ? play(video) : video.pause()), { rootMargin: margin }).observe(video);
   });
 
-  /* 3. Contact form: check the fields, send to Formspree without leaving the page, show the result. */
+  /* Contact form: check the fields, send to Formspree without leaving the page, show the result. */
   const form = document.querySelector('.form');
   if (form) {
     const button = form.querySelector('.btn-send');
@@ -85,7 +93,7 @@
     });
   }
 
-  /* 4. Cards: the "What we do" cards flip over (their video plays only while the back is showing),
+  /* Cards: the "What we do" cards flip over (their video plays only while the back is showing),
         and the team cards expand to show a bio (the whole card is the click target). With a mouse, both close again when it leaves the card.
         The hidden side is made inert so keyboard users cannot Tab into it. */
   document.querySelectorAll('.offer').forEach((card) => {
@@ -106,11 +114,7 @@
       set(flipped);
       if (event.detail === 0) (flipped ? card.querySelector('.flip-back') : flipButton).focus({ preventScroll: true }); // keyboard click: follow the flip; a mouse click leaves focus alone so leaving the card can flip it back
     });
-    card.addEventListener('pointerleave', (event) => { // with a mouse, moving off the card flips it back
-      if (event.pointerType !== 'mouse') return;       // touch has no hover, so it stays tap to flip, tap to flip back
-      if (card.contains(document.activeElement) && document.activeElement.matches(':focus-visible')) return; // keyboard user is still in it
-      set(false);
-    });
+    closeOnMouseLeave(card, () => set(false));
   });
 
   document.querySelectorAll('.person').forEach((person) => {
@@ -125,14 +129,10 @@
       if (event.target.closest('a')) return;            // links inside the bio keep working
       set(!person.classList.contains('open'));
     });
-    person.addEventListener('pointerleave', (event) => { // with a mouse, moving off the card closes it again
-      if (event.pointerType !== 'mouse') return;        // touch has no hover, so it stays tap to open, tap to close
-      if (person.contains(document.activeElement) && document.activeElement.matches(':focus-visible')) return; // keyboard user is still in it
-      set(false);
-    });
+    closeOnMouseLeave(person, () => set(false));
   });
 
-  /* 6. The volatility-surface icon on the risk card is a flat grid that rises into its hills while the card is hovered, from the front
+  /* The volatility-surface icon on the risk card is a flat grid that rises into its hills while the card is hovered, from the front
         to the back. Un-hovering lowers it again. Each mesh cell has its flat shape in d and its risen shape in data-to (same number of
         points), and its flat and risen shade in data-g. The morph is done here, not in CSS, because Safari cannot animate the CSS
         `d` property. */
@@ -140,11 +140,13 @@
     const svg = card.querySelector('.ic-vol');
     if (!svg) return;
     const num = /-?\d*\.?\d+/g, STAGGER = 0.035, ease = (x) => 1 - Math.pow(1 - x, 3);
-    const parts = [...svg.querySelectorAll('.quad')].map((el) => {
+    const quads = [...svg.querySelectorAll('.quad')];
+    const rise = 1 - STAGGER * Math.max(...quads.map((el) => Number(el.dataset.row)));   // the share of the timeline each cell takes to rise: the back row starts last and still ends at 1
+    const parts = quads.map((el) => {
       const from = el.getAttribute('d').match(num).map(Number), to = el.dataset.to.match(num).map(Number), shape = el.getAttribute('d').split(num);
       const [g0, g1] = el.dataset.g.split(',').map(Number), delay = Number(el.dataset.row) * STAGGER;
       return (progress) => {
-        const e = ease(Math.min(1, Math.max(0, (progress - delay) / (1 - 6 * STAGGER))));
+        const e = ease(Math.min(1, Math.max(0, (progress - delay) / rise)));
         el.setAttribute('d', shape.reduce((d, piece, i) => d + piece + (i < from.length ? (from[i] + (to[i] - from[i]) * e).toFixed(2) : ''), ''));
         const g = Math.round(g0 + (g1 - g0) * e);
         el.style.fill = 'rgb(' + g + ',' + g + ',' + g + ')';
@@ -162,7 +164,7 @@
     card.addEventListener('mouseleave', () => go(0));
   });
 
-  /* 7. On the home page the logo link would reload the whole page (the video restarts and the hero cuts in again),
+  /* On the home page the logo link would reload the whole page (the video restarts and the hero cuts in again),
         so there it just glides back to the top instead. From other pages it is a normal link and cross-fades. */
   const brand = document.querySelector('.brand');
   if (brand && document.querySelector('.hero')) brand.addEventListener('click', (event) => {
@@ -171,7 +173,7 @@
     window.scrollTo({ top: 0, behavior: calm ? 'auto' : 'smooth' });
   });
 
-  /* 8. A heading marked data-type types itself out once it has scrolled well into view (it must be in the upper three quarters of the screen),
+  /* A heading marked data-type types itself out once it has scrolled well into view (it must be in the upper three quarters of the screen),
         ahead of a cursor that blinks while it waits and stays solid while typing. The rhythm is uneven like a person typing: a random
         gap between keys, a longer one after each space, now and then a short hesitation. The full text stays in place, hidden, so the
         layout never shifts, and a screen reader reads the heading as usual. */
