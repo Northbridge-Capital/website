@@ -1,0 +1,17 @@
+/* ---------- media placeholders: video slots drift, photo slots are still ---------- */
+/* when real photos and videos arrive, a slot is replaced by an <img> or a muted, looping <video> */
+.slot{position:absolute;inset:0;overflow:hidden;background:#2b2b2a}
+.slot::after{content:attr(data-label);position:absolute;left:16px;top:16px;z-index:1;max-width:calc(100% - 32px);padding:5px 10px;border:1px solid currentColor;border-radius:3px;font-size:11px;line-height:14px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.85);background:rgba(0,0,0,.5)}
+.slot-video{background:#1b1b1a}
+.slot-video::before{content:"";position:absolute;top:0;bottom:0;left:0;width:300%;background:linear-gradient(120deg,#1b1b1a,#4a4a47 17%,#232322 30%,#5a5a56 42%,#1b1b1a 50%,#4a4a47 67%,#232322 80%,#5a5a56 92%,#1b1b1a);animation:drift 9s ease-in-out infinite alternate;will-change:transform}
+.slot-photo{background:linear-gradient(160deg,#9b9b95,#c9c9c3 55%,#8f8f89)}
+.slot-photo::before{content:"";position:absolute;inset:0;background:linear-gradient(to top right,transparent calc(50% - .5px),rgba(11,11,11,.18) 50%,transparent calc(50% + .5px)),linear-gradient(to top left,transparent calc(50% - .5px),rgba(11,11,11,.18) 50%,transparent calc(50% + .5px))}
+.slot-photo::after{color:rgba(11,11,11,.8);background:rgba(244,244,241,.7)}
+.slot-hero::after{top:88px;left:auto;right:var(--gut)}
+/* real videos fill their box, cropped to fit */
+.hero-poster,.hero-video,.card-video,.lazy-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* the hero shows its still first frame at once and the video fades in over it when it starts playing, so there is no jump */
+.js .hero-video{opacity:0;transition:opacity 1.4s ease}
+.js .hero-video.is-playing{opacity:1}
+.ph.slot{position:relative;inset:auto;overflow:hidden}
+.ph.slot::after{left:10px;top:10px;font-size:10px;padding:3px 7px}
