@@ -41,9 +41,9 @@
   .js .foot .word:not(.seen){opacity:0;transform:translateY(30px)}
   .js .foot .word{transition:opacity 1s ease,transform 1.1s var(--ease-out)}
   /* typed headings (the typed-heading part of site.js): the part still to be typed is invisible but keeps its space; the cursor takes none */
-  .rest{visibility:hidden}
-  .cur::after{content:"_";display:inline-block;width:0;animation:blink 1.1s steps(1) infinite}
-  .cur.busy::after{animation:none}
+  [data-type] .rest{visibility:hidden}
+  [data-type] .cur::after{content:"_";display:inline-block;width:0;animation:blink 1.1s steps(1) infinite}
+  [data-type] .cur.busy::after{animation:none}
   /* the home hero fills the screen and stays put while "What we do" slides up over it; the section's content lifts a little further
      as it arrives. Both follow the scroll wheel, so scrolling back up reverses them */
   .hero{position:sticky;top:0}
