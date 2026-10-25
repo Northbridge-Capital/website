@@ -1,0 +1,12 @@
+/* ---------- How we work: photo cards that link to their own page ---------- */
+.case{display:block;position:relative;overflow:hidden;border-radius:var(--radius);background:#000;height:clamp(460px,42vw,640px)}
+.case::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.55));pointer-events:none}
+.goc{position:absolute;top:16px;right:16px;z-index:2;display:grid;place-items:center;width:36px;height:36px;border:1px solid rgba(255,255,255,.45);border-radius:50%;background:rgba(0,0,0,.35);color:#fff;transition:background-color .3s ease,color .3s ease,transform .5s var(--ease)}
+.case:hover .goc,.case:focus-visible .goc{background:#fff;color:var(--ink);transform:translate(2px,-2px)}
+.case .glass{z-index:2;transition:transform .5s var(--ease-out),border-color .4s ease,background-color .4s ease}
+.case .glass p{min-height:calc(2 * 1.45em)}
+.case .glass-top{background:linear-gradient(rgba(255,255,255,.9),rgba(255,255,255,.9)) left bottom/0 1px no-repeat;transition:background-size .7s var(--ease)}
+.case>.slot{transition:transform 1s var(--ease-out)}
+.case:hover>.slot{transform:scale(1.05)}
+.case:hover .glass{transform:translateY(-6px);border-color:rgba(255,255,255,.42);background-color:rgba(18,18,18,.52)}
+.case:hover .glass-top{background-size:100% 1px}
