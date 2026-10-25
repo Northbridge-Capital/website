@@ -4,6 +4,7 @@ pagination:
   data: details
   size: 1
   alias: item
+  addAllPagesToCollections: true   # without this only the first page of the pagination would reach the sitemap collection
 permalink: "/{{ sections[item.group].path }}/{{ item.slug }}/"
 tags: sitemap
 eleventyComputed:

@@ -15,6 +15,7 @@ src/
   index.njk                 the home page
   detail.njk                the one template for every inner page ("What we do" and "How we work")
   404.njk                   the "page not found" page
+  llms.txt.njk, sitemap.njk, robots.njk   the files for AI assistants and search engines
   _data/                    the content: site.json, sections.json (section names and folders),
                             offers.json, cases.json, people.json, links.json (the inner pages are built from offers and cases in eleventy.config.js)
   _includes/
@@ -56,6 +57,7 @@ npm run build   # builds the finished site into _site/
 - **Section drift:** the content of every section except "What we do" eases up about 70 px and fades in as the section scrolls in (`12-motion.css`, with `.arrived` added to the section by `site.js`). It is timed, not tied to the scroll wheel, so it stays smooth. It is off for visitors who prefer less motion.
 - **The hero and "What we do":** the home hero is pinned (`position:sticky`) and fills the screen, and "What we do" slides up over it. The section's content also lifts as it arrives. This follows the scroll wheel (scroll-linked animation), so scrolling back up reverses it. It is the only section that does this. Firefox cannot do the scroll-linked lift yet and shows the content at once.
 - **Home logo:** on the home page it glides back to the top instead of reloading the page (`site.js`).
+- **Search and AI assistants:** every indexable page carries schema.org structured data (`partials/structured-data.njk`: the firm as an `Organization` that knows about the four offers, the website, and a breadcrumb on inner pages), built from the data files so it cannot drift from the text. The firm is deliberately not marked as a `FinancialService`, because it trades only its own capital. `sameAs` fills itself from `links.json` once the footer links have real addresses. `/llms.txt` is a plain summary for AI assistants, also generated from the data, and `/sitemap.xml` lists every page (inner pages need `addAllPagesToCollections` in `detail.njk`, or only the first would appear). The 404 page is marked `noindex` and has no structured data.
 - **Cache:** the build adds a short fingerprint to the stylesheet, script and every video and poster address (the `media` filter), so browsers always fetch the newest copy, including after you replace a video file with the same name.
 - **Videos** (all in `src/assets/media/`, silent loops, each with a `-poster.jpg` still):
   - `hero.mp4`: the home hero (29 s montage of hard cuts: a quick opening burst, then about 2 seconds a shot, like Halfspace). It has the shared black-and-white grade with each clip's brightness matched, and no grain; the poster is its exact first frame.
