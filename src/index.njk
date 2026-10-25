@@ -70,7 +70,7 @@ tags: sitemap
     </div>
     <div class="g12 people">
       {%- for p in people %}
-      <div class="c c-s3 person" style="--n:{{ loop.index0 }}"><div class="ph slot slot-photo" data-label="Photo · portrait 4:5" aria-hidden="true"><i class="ph-bg"></i><span class="ph-ini">{{ p.initials }}</span></div><div class="pmeta"><div><div class="name">{{ p.name }}</div><div class="mute role">{{ p.role }}</div></div><button class="more-btn" type="button" aria-label="More about {{ p.name }}" aria-expanded="false" aria-controls="bio{{ loop.index }}"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 0v12M0 6h12"/></svg></button></div><span class="person-line" aria-hidden="true"></span><div class="bio" id="bio{{ loop.index }}" inert><div><p>{{ p.bio }}</p></div></div></div>
+      <div class="c c-s3 person" style="--n:{{ loop.index0 }}"><div class="ph slot slot-photo" data-label="Photo · landscape 5:4" aria-hidden="true"><i class="ph-bg"></i><span class="ph-ini">{{ p.initials }}</span></div><div class="pmeta"><div><div class="name">{{ p.name }}</div><div class="mute role">{{ p.role }}</div></div><button class="more-btn" type="button" aria-label="More about {{ p.name }}" aria-expanded="false" aria-controls="bio{{ loop.index }}"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 0v12M0 6h12"/></svg></button></div><span class="person-line" aria-hidden="true"></span><div class="bio" id="bio{{ loop.index }}" inert><div><p>{{ p.bio }}</p></div></div></div>
       {%- endfor %}
     </div>
   </div>

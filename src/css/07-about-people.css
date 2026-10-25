@@ -15,7 +15,7 @@
 
 /* team: portraits that expand to show a bio */
 .people{margin-top:var(--head)}
-.ph{display:flex;align-items:center;justify-content:center;aspect-ratio:4/5;border-radius:var(--radius);color:rgba(11,11,11,.3);font-size:clamp(48px,6vw,96px);font-weight:300;letter-spacing:-.04em}
+.ph{display:flex;align-items:center;justify-content:center;aspect-ratio:5/4;border-radius:var(--radius);color:rgba(11,11,11,.3);font-size:clamp(48px,6vw,96px);font-weight:300;letter-spacing:-.04em}
 .s-dark .person .mute{color:var(--on-dark-mute)}
 .person{position:relative;cursor:pointer;transition:transform .35s var(--spring),box-shadow .35s ease}
 @media (hover:hover){.person:hover{transform:translateY(-3px) scale(1.01);box-shadow:0 12px 26px -14px rgba(0,0,0,.7);z-index:2}}
