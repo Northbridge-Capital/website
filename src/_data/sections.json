@@ -1,0 +1,13 @@
+{
+  "what": {
+    "name": "What we do",
+    "path": "what-we-do"
+  },
+  "who": {
+    "name": "Who we are"
+  },
+  "how": {
+    "name": "How we work",
+    "path": "how-we-work"
+  }
+}
