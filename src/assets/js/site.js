@@ -135,8 +135,8 @@
   /* The volatility-surface icon on the risk card is a flat grid that rises into its hills while the card is hovered, from the front
         to the back. Un-hovering lowers it again. Each mesh cell has its flat shape in d and its risen shape in data-to (same number of
         points), and its flat and risen shade in data-g. The morph is done here, not in CSS, because Safari cannot animate the CSS
-        `d` property. */
-  if (!calm) document.querySelectorAll('.offer').forEach((card) => {
+        `d` property. Only for a mouse: on a touch screen a tap would raise it and nothing would lower it, and the card is flipped away anyway. */
+  if (!calm && matchMedia('(hover: hover)').matches) document.querySelectorAll('.offer').forEach((card) => {
     const svg = card.querySelector('.ic-vol');
     if (!svg) return;
     const num = /-?\d*\.?\d+/g, STAGGER = 0.035, ease = (x) => 1 - Math.pow(1 - x, 3);
