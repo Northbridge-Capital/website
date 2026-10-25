@@ -1,61 +1,70 @@
 # Northbridge Capital Website
 
-Static marketing website for Northbridge Capital, based on the HTML5 UP "Big Picture" template and customized for firm content, team information, and contact flow.
+Website for Northbridge Capital, built with [Eleventy](https://www.11ty.dev/) (a static site generator) and published on GitHub Pages.
 
 Live site: https://northbridge-capital.com/
 
-## Tech Stack
+## How it works
 
-- HTML5 (`index.html`)
-- CSS + Sass (`assets/css`, `assets/sass`)
-- JavaScript/jQuery plugins for scroll effects and gallery interactions (`assets/js`)
-- GitHub Pages deployment via GitHub Actions (`.github/workflows/static.yml`)
+You edit the files in `src/`. A build step (`npm run build`) turns them into the finished site in `_site/`, and that is what gets published. The header, footer and the cards are written once and reused on every page.
 
-## Project Structure
+## Project structure
 
-- `index.html`: single-page site content and section layout
-- `assets/css/main.css`: compiled stylesheet used by the site
-- `assets/sass/main.scss`: Sass entrypoint for style source
-- `assets/js/main.js`: page behavior (animations, gallery, scroll effects)
-- `images/`: section backgrounds and gallery images
-- `.github/workflows/static.yml`: deploy workflow for GitHub Pages
+```
+src/
+  index.njk                 the home page
+  detail.njk                the one template for every inner page ("What we do" and "How we work")
+  404.njk                   the "page not found" page
+  _data/                    the content: site.json, sections.json (section names and folders),
+                            offers.json, cases.json, people.json, links.json (the inner pages are built from offers and cases in eleventy.config.js)
+  _includes/
+    layouts/base.njk        the shared page frame (head tags, skip link, scripts)
+    partials/               header.njk and footer.njk
+    icons/                  the four animated card icons
+  css/                      the styles, split by purpose (see below)
+  assets/                   fonts/, img/, media/ (the hero video) and js/site.js, copied as they are
+eleventy.config.js          build settings
+.github/workflows/static.yml  builds and publishes the site when you push to main
+```
 
-## Run Locally
+### The styles (`src/css/`)
 
-No build step is required for normal content edits.
+The numbered files are joined in order into one file, `/assets/css/styles.css`, so the order matters.
+`00-fonts`, `01-base` (colours, spacing, layout grid, type, section tones), `02-buttons`, `03-header`, `04-hero`, `05-media` (photo and video placeholders), `06-offers` (flip cards and icons), `07-about-people`, `08-cases`, `09-contact` (form), `10-footer`, `11-pages` (inner pages), `12-motion` (all animations), `13-responsive` (small screens), `14-reduced-motion` (visitors who prefer less motion), `15-transitions` (the cross-fade between pages).
 
-1. Start a local static server from the repo root:
-   ```bash
-   python3 -m http.server 8080
-   ```
-2. Open `http://localhost:8080`.
+## Working on the site
 
-## Editing Guide
+You need [Node.js](https://nodejs.org/) (version 20 or newer).
 
-- Update text, sections, nav items, and contact form in `index.html`.
-- The contact form currently posts to Formspree (`https://formspree.io/f/mzzglgwg`).
-- Replace gallery or hero images in `images/` and keep file paths in `index.html` in sync.
+```bash
+npm install     # once, to download Eleventy
+npm start       # builds the site and opens a local preview that refreshes when you save
+npm run build   # builds the finished site into _site/
+```
 
-## Styling Workflow
+## Editing guide
 
-If you edit Sass files, recompile to CSS before committing.
-
-- One-time compile:
-  ```bash
-  sass assets/sass/main.scss assets/css/main.css
-  ```
-- Watch mode:
-  ```bash
-  sass --watch assets/sass/main.scss:assets/css/main.css
-  ```
-
-(`sass` here refers to Dart Sass CLI.)
+- **Change text on a card, an inner page or a person:** edit the JSON files in `src/_data/` (`offers.json` and `cases.json` hold each page's `back`, `intro`, `detail` and three `points`). The home page and the inner pages update together.
+- **Add a "What we do" or "How we work" page:** add an entry to `src/_data/offers.json` or `cases.json` (the `slug` becomes the address). The page, its link, its "next" link and its place in the sitemap are created automatically. A new "What we do" entry also needs an icon name that matches a file in `src/_includes/icons/`.
+- **Rename a section or change its folder:** edit `src/_data/sections.json`. The header, headings, breadcrumbs and page addresses follow. The keys (`what`, `who`, `how`) are also the `id` of each section on the home page, so keep them in step.
+- **Change the header or footer:** edit `src/_includes/partials/`. It changes everywhere.
+- **Footer links** (LinkedIn, Databricks datasets, GitHub, YouTube) are in `src/_data/links.json`; every `href` is still `#`, so put the real addresses there. Their small logos are in `src/_includes/icons/social-*.svg`. The logos are the official brand marks (taken from the Simple Icons set); check each company's brand guidelines before launch.
+- **The frame around "What we do"** is a tonal mat (`.s-framed` in `01-base.css`, colours `--tone-mat` and `--mat`), not a border. Add the class to any other section to frame it the same way.
+- **Change colours, spacing or the corner radius:** edit the values at the top of `src/css/01-base.css`. Each section is one of five tones (`--tone-light`, `-dark`, `-grey`, `-night`, `-stone`).
+- **Page transitions:** moving between pages cross-fades, using the browser's own View Transitions feature (`15-transitions.css`, no script). Chrome, Edge and Safari 18.2+ do it; Firefox does not yet and simply loads the page. The header is deliberately not given its own transition name: it is absolutely positioned and scrolls away, so a named header would fly in from above when you navigate from far down the page.
+- **Section drift:** the content of every section eases up about 70 px and fades in as the section scrolls in (`12-motion.css`, with `.arrived` added to the section by part 1b of `site.js`). It is timed, not tied to the scroll wheel, so it stays smooth. It is off for visitors who prefer less motion.
+- **Cache:** the build adds a short fingerprint to the stylesheet, script and every video and poster address (the `media` filter), so browsers always fetch the newest copy, including after you replace a video file with the same name.
+- **Videos** (all in `src/assets/media/`, silent loops, each with a `-poster.jpg` still):
+  - `hero.mp4`: the home hero (22 s montage). It is the only video with the grainy early-digital-camera look; every other video and still is plain, with just the shared black-and-white grade.
+  - `cards/card1…card4.mp4`: the back of each "What we do" card, in the order of `src/_data/offers.json` (square). They start when the card is flipped.
+  - `cards/card1…card4-wide.mp4`: the same four clips in widescreen, used as the page header of each "What we do" page (`offers.json` names the clip with `video`). The "How we work" pages have no video yet, so they still show a placeholder.
+  - `who-we-are.mp4`: the wide feature video in "Who we are" (graded like the hero, no grain).
+  Only the hero loads straight away. The others load shortly before they are needed, and the hero and the "Who we are" video pause while off screen. Visitors who prefer less motion see the still posters.
+- **Placeholders:** the other photos and videos are placeholders (`.slot`, `.slot-photo`, `.slot-video`; the label says what goes there). The `[Placeholder: …]` text in the team bios is also temporary; the card backs and the inner pages now have a first draft of real copy to be checked for truth. Replace a slot with an `<img>` or a muted, looping `<video>` when the media is chosen.
+- The contact form sends to Formspree (the address is in `src/_data/site.json`).
+- The share image and icons are in `src/assets/img/`.
+- The site targets current browsers (the last two years of Chrome, Edge, Firefox and Safari), so there are no fallbacks for older ones. The one exception is the hero's scroll-linked parallax, which Firefox does not support yet: it simply does not move there.
 
 ## Deployment
 
-Push to `main` to trigger GitHub Actions deployment to GitHub Pages via `.github/workflows/static.yml`.
-
-## Attribution
-
-- Template: "Big Picture" by HTML5 UP
-- License: CCA 3.0 (`html5up.net/license`)
+Pushing to `main` runs `.github/workflows/static.yml`, which installs the dependencies, builds the site and publishes the `_site` folder to GitHub Pages. The first time, check in the repository's Settings → Pages that the source is set to **GitHub Actions**.

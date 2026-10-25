@@ -1,0 +1,18 @@
+{
+  "name": "northbridge-capital-website",
+  "version": "1.0.0",
+  "description": "Static website for Northbridge Capital, built with Eleventy.",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve --quiet"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github-northbridge:Northbridge-Capital/website.git"
+  },
+  "type": "commonjs",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.7"
+  },
+  "private": true
+}
