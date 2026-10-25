@@ -1,7 +1,7 @@
 /* ---------- What we do: offer cards that flip over ---------- */
 /* 4. disciplined risk management: a 3D implied-volatility surface, the kind quants plot: strike across, time to maturity into the
       distance, volatility as height. At rest it is a flat grid. While the card is hovered the surface rises from the front to the back
-      into its smile and hills. site.js (part 6) morphs each mesh cell from its flat shape and shade (d and the first number of data-g)
+      into its smile and hills. the volatility-surface part of site.js morphs each mesh cell from its flat shape and shade (d and the first number of data-g)
       to its risen shape (data-to and the second). */
 .ic-vol .floor{fill:none;stroke:var(--ink);stroke-opacity:.28;stroke-width:.8;stroke-linejoin:round}
 .ic-vol .quad{stroke:var(--ink);stroke-opacity:.5;stroke-width:.55;stroke-linejoin:round}
@@ -17,7 +17,7 @@
 .offer p{color:var(--mute);line-height:1.45}
 
 /* card back: something sits in the background; a flip button turns the card */
-.face.back{overflow:hidden;color:#fff;background:#0B0B0B;border-color:#0B0B0B;transform:rotateY(180deg)}
+.face.back{overflow:hidden;color:#fff;background:var(--ink);border-color:var(--ink);transform:rotateY(180deg)}
 /* darkens the video so the white text stays readable over busy footage (code, numbers) */
 .face.back::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.9),rgba(0,0,0,.62) 55%,rgba(0,0,0,.42));pointer-events:none}
 .back-in{position:relative;z-index:2;margin-top:auto;display:flex;flex-direction:column;gap:10px}
@@ -34,7 +34,7 @@
 .flip-back:hover{background:#fff;color:var(--ink)}
 
 /* icons animate when the card is hovered (idea borrowed from the Halfspace offerings) */
-.pic{--ic-fill:#BDBDB6;--ic-bg:#F4F4F1;margin-top:auto;position:relative;width:96px;height:64px;overflow:hidden;border-radius:var(--radius);background:var(--ic-bg)}
+.pic{--ic-fill:#BDBDB6;--ic-bg:var(--tone-light);margin-top:auto;position:relative;width:96px;height:64px;overflow:hidden;border-radius:var(--radius);background:var(--ic-bg)}
 .pic *{transition-duration:.3s}
 .pic .axis{stroke:var(--ink);stroke-opacity:.35;stroke-width:1}
 .pic .ln,.pic .lab{stroke:var(--ink)}
