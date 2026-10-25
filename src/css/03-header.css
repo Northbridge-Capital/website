@@ -25,4 +25,4 @@
 .navitem:hover .n,.navitem[aria-current="true"] .n{opacity:1}
 .navitem[aria-current="true"]::after{content:"";position:absolute;left:16px;right:16px;bottom:4px;height:1px;background:#fff}
 .navlinks:has([aria-current]) .navitem:not([aria-current]){opacity:.7}
-.navlinks:has([aria-current]) .navitem:not([aria-current]):hover{opacity:1}
+@media (hover:hover){.navlinks:has([aria-current]) .navitem:not([aria-current]):hover{opacity:1}}

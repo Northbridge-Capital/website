@@ -2,21 +2,25 @@
   {
     "name": "Lasse Rasmussen",
     "initials": "LR",
-    "role": "Managing Partner"
+    "role": "Managing Partner",
+    "bio": "Lasse holds an MSc in Finance and Investments from Copenhagen Business School and is at home in fundamental analysis: reading a business, its numbers and its market to judge what it is really worth. Working at a family office, where capital is managed with a long horizon, Lasse brings that patience to how Northbridge weighs opportunity against risk."
   },
   {
     "name": "Oliver Slott",
     "initials": "OS",
-    "role": "Managing Partner"
+    "role": "Managing Partner",
+    "bio": "Oliver holds an MSc in Economics from the University of Copenhagen (cand.polit., finance specialisation), so the finance behind the data is as familiar as the data itself. As a data engineer in fintech, Oliver builds the pipelines that turn raw financial data into something worth trusting, and brings both sides to Northbridge's research."
   },
   {
     "name": "Frederik Danielsen",
     "initials": "FD",
-    "role": "Managing Partner"
+    "role": "Managing Partner",
+    "bio": "Frederik holds an MSc in Finance and Investments from Copenhagen Business School and brings institutional know-how from the pension fund world: working within mandates, governance and clear accountability. That sense of process helps shape how Northbridge runs its own book."
   },
   {
     "name": "Emil Haldan",
     "initials": "EH",
-    "role": "Managing Partner"
+    "role": "Managing Partner",
+    "bio": "Emil holds an MSc in Data Science from the IT University of Copenhagen. As a forward-deployed AI engineer in consulting, Emil works where models meet messy real-world data, and brings that practical eye to Northbridge's research."
   }
 ]

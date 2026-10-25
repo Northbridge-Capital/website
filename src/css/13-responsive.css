@@ -21,7 +21,8 @@
   .social{justify-content:flex-start}
   .point h3,.point p{grid-column:2/-1}
   .point p{margin-top:8px}
-  .pmedia{aspect-ratio:auto;height:320px}
+  .pmedia{aspect-ratio:auto;height:auto;min-height:320px;display:flex;align-items:flex-end}
+  .pnotes{position:relative;inset:auto;width:100%;margin:200px 16px 16px;grid-template-columns:1fr;gap:12px}
 }
 @media (max-width:560px){
   .offers>.c{grid-column:1/-1 !important}

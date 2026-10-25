@@ -1,11 +1,11 @@
 /* ---------- design tokens ---------- */
 :root{
   /* colour: sections alternate light / dark; each step goes slightly deeper */
-  --ink:#0B0B0B; --paper:#F4F4F1;
-  --tone-light:#F4F4F1; --tone-mat:#DDDDD7; --mat:clamp(10px,1.6vw,24px); --tone-dark:#1C1C1B;
+  --ink:#0B0B0B;
+  --tone-light:#F4F4F1; --tone-dark:#1C1C1B;
   --tone-grey:#E9E9E5; --tone-night:#141413; --tone-stone:#DDDDD7;
   --mute:rgba(11,11,11,.62); --soft:rgba(11,11,11,.72); --line:rgba(11,11,11,.18); --line-strong:rgba(11,11,11,.32);
-  --on-dark:#F4F4F1; --on-dark-soft:rgba(244,244,241,.78); --on-dark-mute:rgba(244,244,241,.55);
+  --on-dark:var(--tone-light); --on-dark-soft:rgba(244,244,241,.78); --on-dark-mute:rgba(244,244,241,.55);
   /* spacing */
   --gut:clamp(20px,3.5vw,56px); --gap:16px; --band:clamp(56px,5.5vw,88px); --head:clamp(32px,4vw,56px);
   --radius:4px;
@@ -16,9 +16,11 @@
 }
 
 /* ---------- reset and page defaults ---------- */
+/* Effects that exist only on hover are wrapped in @media (hover:hover) across the stylesheets: on a touch screen a tap would otherwise
+   leave the card lifted or the icon mid-animation until the next tap. Rules shared with :focus-visible stay unwrapped, so keyboards keep them. */
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:16px;line-height:1.5;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{margin:0;background:var(--tone-light);color:var(--ink);font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:16px;line-height:1.5;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 img,video{display:block;max-width:100%}
 h1,h2,h3,p,figure,ul{margin:0;padding:0}
@@ -43,9 +45,12 @@ a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offs
 /* section backgrounds */
 .s-light{background:var(--tone-light)}
 .s-dark{background:var(--tone-dark);color:var(--on-dark)}
-/* a framed section: a slightly darker "mat" runs around a lighter plate, so the section is framed by tone, not by a line */
-.s-framed{background:var(--tone-mat)}
-.s-framed::before{content:"";position:absolute;inset:var(--mat);background:var(--tone-light);border-radius:var(--radius)}
+/* a section framed by an illustration: topographic contour lines (img/contours.svg) curve in from two opposite corners, behind the content */
+.s-contour{overflow:hidden}
+.s-contour>.wrap{z-index:1}
+.s-contour::before,.s-contour::after{content:"";position:absolute;width:min(52vw,680px);aspect-ratio:1;background:url(/assets/img/contours.svg) center/100% 100% no-repeat;pointer-events:none}
+.s-contour::before{top:0;right:0}
+.s-contour::after{bottom:0;left:0;transform:rotate(180deg)}
 .s-grey{background:var(--tone-grey)}
 .s-night{background:var(--tone-night);color:var(--on-dark)}
 .s-foot{background:var(--tone-stone);padding-bottom:clamp(24px,3vw,40px)}
