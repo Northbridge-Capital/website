@@ -71,3 +71,15 @@ npm run build   # builds the finished site into _site/
 ## Deployment
 
 Pushing to `main` runs `.github/workflows/static.yml`, which installs the dependencies, builds the site and publishes the `_site` folder to GitHub Pages. The first time, check in the repository's Settings → Pages that the source is set to **GitHub Actions**.
+
+### Going back to the coming-soon page
+
+The old placeholder page is kept in the tag `coming-soon`. To put it back on the live site, undo the redesign on `main` and push:
+
+```bash
+git checkout main
+git revert -m 1 redesign-live    # redesign-live is the tag on the commit that merged the redesign
+git push origin main
+```
+
+To bring the redesign back afterwards, revert that revert (`git revert <the revert commit>`) and push again. Reverting leaves the history intact, so nothing is lost either way.
