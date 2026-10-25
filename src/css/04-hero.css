@@ -1,11 +1,11 @@
 /* ---------- home hero ---------- */
-.hero{position:relative;height:100vh;height:100svh;min-height:560px;background:#000;overflow:hidden;color:#fff}
+.hero{position:relative;height:100vh;height:calc(100svh / var(--scale));min-height:560px;background:#000;overflow:hidden;color:#fff}
 /* the first frame is a still that would otherwise appear at full brightness in one step: a black veil lifts off it instead */
 .hero::before{content:"";position:absolute;inset:0;z-index:2;background:#000;pointer-events:none;animation:unveil 1.4s ease .1s both}
 .hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,.15) 30%,rgba(0,0,0,.2) 50%,rgba(0,0,0,.78))}
 .hero-foot,.phero-foot{position:absolute;inset:auto 0 0 0;z-index:3;padding-bottom:var(--gut);align-items:last baseline}
 .hero h1{font-size:clamp(56px,10.5vw,176px);line-height:.92;letter-spacing:-.045em}
-.hero-foot p{max-width:30em;font-size:clamp(18px,1.5vw,21px);line-height:1.45;font-weight:300}
+.hero-foot p{font-size:clamp(18px,1.5vw,21px);line-height:1.45;font-weight:300}
 /* tall square brackets around a whole block of text; they sit in the gutter, so the text stays on its grid line */
 .bracketed{position:relative}
 .bracketed::before,.bracketed::after{content:"";position:absolute;top:-.4em;bottom:-.4em;width:7px;border:1px solid currentColor}
