@@ -1,9 +1,0 @@
-  <header class="topbar wrap">
-    <a class="brand" href="/" aria-label="{{ site.name }}"><span class="brand-name">{{ site.name }}<sup class="tm" aria-hidden="true">™</sup></span><span class="brand-div" aria-hidden="true"></span><span class="brand-sym" aria-hidden="true"><i></i><i></i></span></a>
-    <nav class="navlinks" aria-label="Primary">
-      {%- for key, section in sections %}
-      <a class="navitem" href="/#{{ key }}"{% if group == key %} aria-current="true"{% endif %}><span class="n">{{ loop.index | padStart(2) }}</span><span>{{ section.name.split(" ")[0] }}</span><span class="rest"><span>{{ section.name.slice(section.name.indexOf(" ")) }}</span></span></a>
-      {%- endfor %}
-    </nav>
-    <a class="btn btn-ghost btn-sm" href="/#contact">Contact<span class="arr" aria-hidden="true">→</span></a>
-  </header>
