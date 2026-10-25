@@ -1,9 +1,0 @@
-/* ---------- footer ---------- */
-.foot{align-items:last baseline}
-.foot .word{font-size:clamp(40px,6vw,96px);line-height:.95;letter-spacing:-.04em;font-weight:300;color:var(--ink)}
-.social{list-style:none;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px 28px}
-.social a{display:inline-flex;align-items:center;gap:9px;padding:6px 0;color:var(--soft);font-size:15px;transition:color .25s ease}
-.social a:hover,.social a:focus-visible{color:var(--ink)}
-.social .soc-ico{flex:none;transition:transform .35s var(--spring)}
-.social a:hover .soc-ico{transform:translateY(-2px)}
-.foot .legal{color:var(--mute);border-top:1px solid var(--line);padding-top:16px;margin-top:calc(var(--band)/2)}
