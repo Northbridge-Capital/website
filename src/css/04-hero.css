@@ -1,5 +1,5 @@
 /* ---------- home hero ---------- */
-.hero{position:relative;height:clamp(640px,92vh,1100px);background:#000;overflow:hidden;color:#fff}
+.hero{position:relative;height:100vh;height:100svh;min-height:560px;background:#000;overflow:hidden;color:#fff}
 /* the first frame is a still that would otherwise appear at full brightness in one step: a black veil lifts off it instead */
 .hero::before{content:"";position:absolute;inset:0;z-index:2;background:#000;pointer-events:none;animation:unveil 1.4s ease .1s both}
 .hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,.15) 30%,rgba(0,0,0,.2) 50%,rgba(0,0,0,.78))}
@@ -26,4 +26,4 @@
 .lede-gap{margin-bottom:22px}
 .crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:22px;color:rgba(255,255,255,.72)}
 .crumbs a{border-bottom:1px solid rgba(255,255,255,.4)}
-.crumbs a:hover{color:#fff;border-color:#fff}
+@media (hover:hover){.crumbs a:hover{color:#fff;border-color:#fff}}

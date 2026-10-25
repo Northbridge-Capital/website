@@ -5,5 +5,5 @@
 .social a{display:inline-flex;align-items:center;gap:9px;padding:6px 0;color:var(--soft);font-size:15px;transition:color .25s ease}
 .social a:hover,.social a:focus-visible{color:var(--ink)}
 .social .soc-ico{flex:none;transition:transform .35s var(--spring)}
-.social a:hover .soc-ico{transform:translateY(-2px)}
+@media (hover:hover){.social a:hover .soc-ico{transform:translateY(-2px)}}
 .foot .legal{color:var(--mute);border-top:1px solid var(--line);padding-top:16px;margin-top:calc(var(--band)/2)}

@@ -54,7 +54,20 @@ eleventyComputed:
 
 <section class="band s-grey">
   <div class="wrap">
-    <div class="pmedia"><div class="slot slot-video" data-label="Video · wide feature, 21:9 loop" aria-hidden="true"></div></div>
+    <div class="pmedia">
+      {%- if item.feature %}
+      <video class="lazy-video" data-src="{{ ('cards/' + item.feature + '.mp4') | media }}" poster="{{ ('cards/' + item.feature + '-poster.jpg') | media }}" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+      {%- else %}
+      <div class="slot slot-video" data-label="Video · wide feature, 21:9 loop" aria-hidden="true"></div>
+      {%- endif %}
+      {%- if item.notes %}
+      <div class="pnotes">
+        {%- for note in item.notes %}
+        <div class="glass"><div class="glass-top xs caps"><span>{{ note.label }}</span></div><p class="glass-note">{{ note.text }}</p></div>
+        {%- endfor %}
+      </div>
+      {%- endif %}
+    </div>
   </div>
 </section>
 
