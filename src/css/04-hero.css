@@ -1,5 +1,5 @@
 /* ---------- home hero ---------- */
-.hero{position:relative;height:clamp(640px,92vh,1100px);background:#000;overflow:hidden;color:#fff}
+.hero{position:relative;height:100vh;height:100svh;min-height:560px;background:#000;overflow:hidden;color:#fff}
 /* the first frame is a still that would otherwise appear at full brightness in one step: a black veil lifts off it instead */
 .hero::before{content:"";position:absolute;inset:0;z-index:2;background:#000;pointer-events:none;animation:unveil 1.4s ease .1s both}
 .hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,.15) 30%,rgba(0,0,0,.2) 50%,rgba(0,0,0,.78))}

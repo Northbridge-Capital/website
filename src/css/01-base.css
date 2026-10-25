@@ -2,7 +2,7 @@
 :root{
   /* colour: sections alternate light / dark; each step goes slightly deeper */
   --ink:#0B0B0B; --paper:#F4F4F1;
-  --tone-light:#F4F4F1; --tone-mat:#DDDDD7; --mat:clamp(10px,1.6vw,24px); --tone-dark:#1C1C1B;
+  --tone-light:#F4F4F1; --tone-dark:#1C1C1B;
   --tone-grey:#E9E9E5; --tone-night:#141413; --tone-stone:#DDDDD7;
   --mute:rgba(11,11,11,.62); --soft:rgba(11,11,11,.72); --line:rgba(11,11,11,.18); --line-strong:rgba(11,11,11,.32);
   --on-dark:#F4F4F1; --on-dark-soft:rgba(244,244,241,.78); --on-dark-mute:rgba(244,244,241,.55);
@@ -43,9 +43,12 @@ a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offs
 /* section backgrounds */
 .s-light{background:var(--tone-light)}
 .s-dark{background:var(--tone-dark);color:var(--on-dark)}
-/* a framed section: a slightly darker "mat" runs around a lighter plate, so the section is framed by tone, not by a line */
-.s-framed{background:var(--tone-mat)}
-.s-framed::before{content:"";position:absolute;inset:var(--mat);background:var(--tone-light);border-radius:var(--radius)}
+/* a section framed by an illustration: topographic contour lines (img/contours.svg) curve in from two opposite corners, behind the content */
+.s-contour{overflow:hidden}
+.s-contour>.wrap{z-index:1}
+.s-contour::before,.s-contour::after{content:"";position:absolute;width:min(52vw,680px);aspect-ratio:1;background:url(/assets/img/contours.svg) center/100% 100% no-repeat;pointer-events:none}
+.s-contour::before{top:0;right:0}
+.s-contour::after{bottom:0;left:0;transform:rotate(180deg)}
 .s-grey{background:var(--tone-grey)}
 .s-night{background:var(--tone-night);color:var(--on-dark)}
 .s-foot{background:var(--tone-stone);padding-bottom:clamp(24px,3vw,40px)}

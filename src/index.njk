@@ -20,10 +20,10 @@ tags: sitemap
 <main id="main">
 
 <!-- WHAT WE DO -->
-<section id="what" class="band s-light s-framed">
+<section id="what" class="band s-light s-contour">
   <div class="wrap">
     <header class="g12 sec-head">
-      <h2 class="c c-1-7 h2 opt b-029">{{ sections.what.name }}</h2>
+      <h2 class="c c-1-7 h2 opt b-029" data-type>{{ sections.what.name }}</h2>
       <p class="c c-7-13 lead">At Northbridge Capital, we specialize in identifying asymmetric trading opportunities across public markets.</p>
     </header>
     <div class="g12 offers">
@@ -70,7 +70,7 @@ tags: sitemap
     </div>
     <div class="g12 people">
       {%- for p in people %}
-      <div class="c c-s3 person" style="--n:{{ loop.index0 }}"><div class="ph slot slot-photo" data-label="Photo · portrait 4:5" aria-hidden="true"><i class="ph-bg"></i><span class="ph-ini">{{ p.initials }}</span></div><div class="pmeta"><div><div class="name">{{ p.name }}</div><div class="mute role">{{ p.role }}</div></div><button class="more-btn" type="button" aria-label="More about {{ p.name }}" aria-expanded="false" aria-controls="bio{{ loop.index }}"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 0v12M0 6h12"/></svg></button></div><span class="person-line" aria-hidden="true"></span><div class="bio" id="bio{{ loop.index }}" inert><div><p>[Placeholder: {{ p.bio or "short bio, background and a link to a profile page." }}]</p><span class="act">Expands in place</span></div></div></div>
+      <div class="c c-s3 person" style="--n:{{ loop.index0 }}"><div class="ph slot slot-photo" data-label="Photo · portrait 4:5" aria-hidden="true"><i class="ph-bg"></i><span class="ph-ini">{{ p.initials }}</span></div><div class="pmeta"><div><div class="name">{{ p.name }}</div><div class="mute role">{{ p.role }}</div></div><button class="more-btn" type="button" aria-label="More about {{ p.name }}" aria-expanded="false" aria-controls="bio{{ loop.index }}"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 0v12M0 6h12"/></svg></button></div><span class="person-line" aria-hidden="true"></span><div class="bio" id="bio{{ loop.index }}" inert><div><p>{{ p.bio }}</p></div></div></div>
       {%- endfor %}
     </div>
   </div>
@@ -85,7 +85,11 @@ tags: sitemap
     <div class="g12 cases">
       {%- for c in cases %}
       <a class="c c-s4 case" href="/{{ sections.how.path }}/{{ c.slug }}/" style="--n:{{ loop.index0 }}" aria-label="Open page: {{ c.title | lower }}">
+        {%- if c.video %}
+        <video class="lazy-video" data-src="{{ ('cards/' + c.video + '.mp4') | media }}" poster="{{ ('cards/' + c.video + '-poster.jpg') | media }}" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+        {%- else %}
         <div class="slot slot-video" data-label="Video · card, portrait loop" aria-hidden="true"></div>
+        {%- endif %}
         <span class="goc" aria-hidden="true">↗</span>
         <div class="glass">
           <div class="glass-top xs"><span>Principle</span><span>{{ loop.index | padStart }}</span></div>
