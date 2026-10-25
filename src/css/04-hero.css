@@ -26,4 +26,4 @@
 .lede-gap{margin-bottom:22px}
 .crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:22px;color:rgba(255,255,255,.72)}
 .crumbs a{border-bottom:1px solid rgba(255,255,255,.4)}
-.crumbs a:hover{color:#fff;border-color:#fff}
+@media (hover:hover){.crumbs a:hover{color:#fff;border-color:#fff}}
