@@ -1,0 +1,98 @@
+[
+  {
+    "slug": "asymmetric-opportunities",
+    "title": "Asymmetric opportunities",
+    "desc": "Trades where the possible gain is far larger than the possible loss.",
+    "icon": "skew",
+    "back": "We hunt for markets that misjudge how things can turn out, then take small, defined risks on the cases that look most lopsided.",
+    "video": "card1",
+    "intro": "Our edge is not predicting the future. It is spotting where the price leaves out a realistic outcome, and paying little for the chance of a large move.",
+    "detail": "Most of the work is waiting. A good lopsided trade is rare, and we would rather pass than force one. When one appears, we know what we stand to lose before we think about what we might make.",
+    "points": [
+      {
+        "title": "Defined downside",
+        "text": "We know the worst case and its cost before a position is opened."
+      },
+      {
+        "title": "Prices that miss outcomes",
+        "text": "We look for places where the market ignores a plausible result, good or bad."
+      },
+      {
+        "title": "Patience over activity",
+        "text": "We pass on ordinary trades and keep our attention for the rare lopsided ones."
+      }
+    ]
+  },
+  {
+    "slug": "fundamental-analysis",
+    "title": "Fundamental analysis",
+    "desc": "Understanding a business and its market before we trade it.",
+    "icon": "scan",
+    "back": "We read the filings, study the industry and build our own picture of value, so every position rests on a view we can explain.",
+    "video": "card2",
+    "intro": "Fundamental analysis is how we learn what a company is worth and what the market currently believes. The gap between the two is where an opportunity might be.",
+    "detail": "We work from primary sources where we can: reports, accounts, industry data and our own models. The result is a short written case that says what we expect to happen and why.",
+    "points": [
+      {
+        "title": "Primary sources first",
+        "text": "We start from company reports and raw data instead of other people's summaries."
+      },
+      {
+        "title": "Value against price",
+        "text": "We estimate what something is worth, then compare it with what the market is paying."
+      },
+      {
+        "title": "A case on paper",
+        "text": "Each idea is written up so that it can be questioned before capital is committed."
+      }
+    ]
+  },
+  {
+    "slug": "data-driven-insights",
+    "title": "Data-driven insights",
+    "desc": "Quantitative research that tests our ideas against the evidence.",
+    "icon": "fit",
+    "back": "We use statistics and code to check what we believe, uncover patterns worth a closer look and measure how our own decisions perform.",
+    "video": "card3",
+    "intro": "Finance, data science and quantitative research meet on our team. Numbers cannot replace judgment, but they are very good at showing where judgment is wrong.",
+    "detail": "We build the tools we use and test them on history before relying on them. We also record our own decisions, so we can see over time where we are good and where we are not.",
+    "points": [
+      {
+        "title": "Tested on history",
+        "text": "A pattern has to hold up in past data before it influences a trade."
+      },
+      {
+        "title": "Our own track record",
+        "text": "We log decisions and outcomes, and study the misses as closely as the wins."
+      },
+      {
+        "title": "Tools we build",
+        "text": "The models and data pipelines are written in-house, so we know how they behave."
+      }
+    ]
+  },
+  {
+    "slug": "disciplined-risk-management",
+    "title": "Disciplined risk management",
+    "desc": "Limits that protect our capital so we can keep trading.",
+    "icon": "vol",
+    "back": "No single position can hurt the firm. Size, loss limits and exposure are fixed in advance and checked across everything we hold.",
+    "video": "card4",
+    "intro": "The money we trade is our own, so the first job is to still have it tomorrow. Risk is something we design before a trade, not something we react to afterwards.",
+    "detail": "We think about how positions behave together and what happens in a sharp market move. The aim is that a bad period is uncomfortable but never decisive.",
+    "points": [
+      {
+        "title": "Size decided up front",
+        "text": "How much can be at stake in a position is set before it is opened."
+      },
+      {
+        "title": "The whole portfolio",
+        "text": "We measure combined exposure, because positions can fall together."
+      },
+      {
+        "title": "Built to survive stress",
+        "text": "We ask how a sudden, violent move would hit us and keep the answer acceptable."
+      }
+    ]
+  }
+]

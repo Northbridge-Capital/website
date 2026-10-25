@@ -1,0 +1,145 @@
+---
+layout: layouts/base.njk
+title: Northbridge Capital · Independent proprietary trading firm
+tags: sitemap
+---
+<!-- HERO -->
+<section id="top" class="hero">
+  <img class="hero-poster" src="{{ 'hero-poster.jpg' | media }}" alt="" width="1920" height="1080" fetchpriority="high">
+  <video class="hero-video" src="{{ 'hero.mp4' | media }}" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1"></video>
+  <div class="hero-shade"></div>
+
+  <div class="vert xs" aria-hidden="true"><span>Scroll to explore</span><svg viewBox="0 0 12 20"><path d="M6 1v17M1.5 13.5L6 18l4.5-4.5"/></svg></div>
+
+  <div class="hero-foot wrap g12">
+    <h1 class="c c-1-7 in d2"><span class="ln b-044">Secure</span><span class="ln b-018">Tomorrow.</span></h1>
+    <p class="c c-8-13 bracketed in d3">Welcome to Northbridge Capital, an independent proprietary trading firm. We trade our own capital, guided by disciplined strategy, deep research, and rigorous risk management.</p>
+  </div>
+</section>
+
+<main id="main">
+
+<!-- WHAT WE DO -->
+<section id="what" class="band s-light s-contour">
+  <div class="wrap">
+    <header class="g12 sec-head">
+      <h2 class="c c-1-7 h2 opt b-029" data-type>{{ sections.what.name }}</h2>
+      <p class="c c-7-13 lead">At Northbridge Capital, we specialize in identifying asymmetric trading opportunities across public markets.</p>
+    </header>
+    <div class="g12 offers">
+      {%- for o in offers %}
+      <article class="c c-s3 offer" style="--n:{{ loop.index0 }}">
+        <div class="flip">
+          <div class="face front">
+            <div class="offer-top xs"><span>Discipline</span><span class="tag">{{ loop.index | padStart }}</span></div>
+            <h3>{{ o.title }}</h3>
+            <p>{{ o.desc }}</p>
+            {% include "icons/" + o.icon + ".svg" %}
+            <button class="flip-btn" type="button" aria-label="Flip card: more about {{ o.title }}" aria-expanded="false"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8a5.5 5.5 0 0 1 9.4-3.9M13.5 8a5.5 5.5 0 0 1-9.4 3.9M12.4 1.6v2.8H9.6M3.6 14.4v-2.8h2.8"/></svg></button>
+          </div>
+          <div class="face back" inert>
+            <video class="card-video" data-src="{{ ('cards/' + o.video + '.mp4') | media }}" poster="{{ ('cards/' + o.video + '-poster.jpg') | media }}" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+            <div class="back-in">
+              <h3>{{ o.title }}</h3>
+              <p>{{ o.back }}</p>
+              <div class="back-row"><a class="more" href="/{{ sections.what.path }}/{{ o.slug }}/">Read more <span aria-hidden="true">→</span></a><button class="flip-back" type="button" aria-label="Flip card back">Back</button></div>
+            </div>
+          </div>
+        </div>
+      </article>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE ARE -->
+<section id="who" class="band s-dark">
+  <div class="wrap">
+    <header class="g12 sec-head">
+      <h2 class="c c-full h2 opt b-029">{{ sections.who.name }}</h2>
+    </header>
+    <div class="about">
+      <video class="lazy-video" data-src="{{ 'who-we-are.mp4' | media }}" poster="{{ 'who-we-are-poster.jpg' | media }}" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+      <div class="about-in">
+        <p class="lead">Northbridge Capital is an independent proprietary trading firm founded by a team of professionals with backgrounds in finance, data science, and quantitative research.</p>
+        <div class="glass">
+          <div class="glass-top xs caps"><span>Our shared commitment</span></div>
+          <p class="glass-note">We are united by a shared commitment to analytical rigor, transparency, and a long-term perspective in how we deploy our own capital.</p>
+        </div>
+      </div>
+    </div>
+    <div class="g12 people">
+      {%- for p in people %}
+      <div class="c c-s3 person" style="--n:{{ loop.index0 }}"><div class="ph slot slot-photo" data-label="Photo · landscape 5:4" aria-hidden="true"><i class="ph-bg"></i><span class="ph-ini">{{ p.initials }}</span></div><div class="pmeta"><div><div class="name">{{ p.name }}</div><div class="mute role">{{ p.role }}</div></div><button class="more-btn" type="button" aria-label="More about {{ p.name }}" aria-expanded="false" aria-controls="bio{{ loop.index }}"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 0v12M0 6h12"/></svg></button></div><span class="person-line" aria-hidden="true"></span><div class="bio" id="bio{{ loop.index }}" inert><div><p>{{ p.bio }}</p></div></div></div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section id="how" class="band s-grey">
+  <div class="wrap">
+    <header class="g12 sec-head">
+      <h2 class="c c-full h2 opt b-085">{{ sections.how.name }}</h2>
+    </header>
+    <div class="g12 cases">
+      {%- for c in cases %}
+      <a class="c c-s4 case" href="/{{ sections.how.path }}/{{ c.slug }}/" style="--n:{{ loop.index0 }}" aria-label="Open page: {{ c.title | lower }}">
+        {%- if c.video %}
+        <video class="lazy-video" data-src="{{ ('cards/' + c.video + '.mp4') | media }}" poster="{{ ('cards/' + c.video + '-poster.jpg') | media }}" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+        {%- else %}
+        <div class="slot slot-video" data-label="Video · card, portrait loop" aria-hidden="true"></div>
+        {%- endif %}
+        <span class="goc" aria-hidden="true">↗</span>
+        <div class="glass">
+          <div class="glass-top xs"><span>Principle</span><span>{{ loop.index | padStart }}</span></div>
+          <h3>{{ c.title }}</h3>
+          <p>{{ c.desc }}</p>
+          <div class="glass-tags xs"><span>{{ c.tags[0] }}</span><span>{{ c.tags[1] }}</span></div>
+        </div>
+      </a>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="band s-night contact">
+  <div class="wrap">
+    <div class="g12 contact-grid">
+      <div class="c c-1-7">
+        <h2 class="opt b-044">Say hello.</h2>
+        <p class="intro">We welcome inquiries from partners, counterparties, and professionals. Please reach out to learn more about Northbridge Capital or to start a conversation.</p>
+      </div>
+      <form class="c c-7-13 form" method="post" action="{{ site.formAction }}" novalidate>
+        <div class="field">
+          <input id="f-name" type="text" name="name" placeholder=" " autocomplete="name" required aria-describedby="e-name">
+          <label for="f-name">Name</label>
+          <span class="bar" aria-hidden="true"></span>
+          <svg class="ok" width="14" height="11" viewBox="0 0 14 11" aria-hidden="true"><path d="M1 5.5l4 4L13 1.5"/></svg>
+          <span class="err" id="e-name">Please tell us your name.</span>
+        </div>
+        <div class="field">
+          <input id="f-email" type="email" name="email" placeholder=" " autocomplete="email" required aria-describedby="e-email">
+          <label for="f-email">Email</label>
+          <span class="bar" aria-hidden="true"></span>
+          <svg class="ok" width="14" height="11" viewBox="0 0 14 11" aria-hidden="true"><path d="M1 5.5l4 4L13 1.5"/></svg>
+          <span class="err" id="e-email">Please enter a valid email address.</span>
+        </div>
+        <div class="field">
+          <textarea id="f-msg" name="message" rows="3" placeholder=" " required aria-describedby="e-msg"></textarea>
+          <label for="f-msg">Message</label>
+          <span class="bar" aria-hidden="true"></span>
+          <span class="err" id="e-msg">Please write a short message.</span>
+        </div>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+        <div class="form-foot">
+          <button class="btn btn-ghost btn-send" type="submit"><span class="lbl-txt">Send message</span><span class="arr" aria-hidden="true">→</span></button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
