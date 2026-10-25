@@ -1,9 +1,0 @@
-.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 24px;border-radius:var(--radius);font:inherit;font-size:16px;font-weight:500;border:1px solid transparent;cursor:pointer}
-.btn-sm{min-height:40px;padding:0 18px}
-.btn-ghost{position:relative;overflow:hidden;isolation:isolate;gap:0;border-color:#fff;color:#fff;background:transparent;transition:color .45s var(--ease)}
-/* the white fill sweeps in from the left and leaves to the right */
-.btn-ghost::before{content:"";position:absolute;inset:0;z-index:-1;background:#fff;transform:scaleX(0);transform-origin:right;transition:transform .55s var(--ease)}
-.btn-ghost:hover,.btn-ghost:focus-visible{color:var(--ink)}
-.btn-ghost:hover::before,.btn-ghost:focus-visible::before{transform:scaleX(1);transform-origin:left}
-.btn-ghost .arr{display:inline-block;width:0;margin-left:0;opacity:0;transform:translateX(-10px);overflow:hidden;white-space:nowrap;transition:width .45s var(--ease),margin-left .45s var(--ease),opacity .3s ease,transform .45s var(--ease)}
-.btn-ghost:hover .arr,.btn-ghost:focus-visible .arr{width:1em;margin-left:8px;opacity:1;transform:none;transition-delay:0s,0s,.12s,0s}
