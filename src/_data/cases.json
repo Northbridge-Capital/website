@@ -1,0 +1,77 @@
+[
+  {
+    "slug": "disciplined-strategy",
+    "title": "Disciplined strategy",
+    "desc": "A written playbook, followed the same way every time.",
+    "tags": [
+      "Process",
+      "Repeatable"
+    ],
+    "intro": "Markets tempt people to improvise. We reduce that by agreeing on the rules in a calm moment and applying them when things are not calm.",
+    "detail": "The playbook is a living document. After each period we look at what happened, separate skill from luck, and change a rule only when the evidence supports it.",
+    "points": [
+      {
+        "title": "The rules are written",
+        "text": "Our process is documented well enough for a new colleague to follow it."
+      },
+      {
+        "title": "Same checks, every idea",
+        "text": "Every idea passes the same questions, no matter who proposes it."
+      },
+      {
+        "title": "Reviewed on a rhythm",
+        "text": "We hold regular reviews and change the playbook deliberately, not on impulse."
+      }
+    ]
+  },
+  {
+    "slug": "deep-research",
+    "title": "Deep research",
+    "desc": "Every idea is researched, written down and challenged by the team.",
+    "tags": [
+      "Analysis",
+      "Data"
+    ],
+    "intro": "Before we trade an idea, we research it properly and test it against our colleagues' scepticism.",
+    "detail": "One of us researches the idea and writes a short summary of what we expect to happen and why. The others then try to find the weak spots. We trade it only if the idea still makes sense after that.",
+    "points": [
+      {
+        "title": "Ask the right question",
+        "text": "We decide what we need to find out before we start collecting data."
+      },
+      {
+        "title": "Write it down plainly",
+        "text": "The idea and the reasoning go on paper, so anyone can follow them."
+      },
+      {
+        "title": "Let a colleague disagree",
+        "text": "Someone else tries to prove the idea wrong before any capital is used."
+      }
+    ]
+  },
+  {
+    "slug": "capital-discipline",
+    "title": "Capital discipline",
+    "desc": "Rules for how our money is used, and when it is not.",
+    "tags": [
+      "Risk",
+      "Limits"
+    ],
+    "intro": "There are no outside investors, so no one else bears our mistakes. That makes us stricter, not looser, about how capital is deployed.",
+    "detail": "We keep clear lines between ideas and execution. A trade is placed only inside agreed limits, and when a limit is reached we stop and look at why before we continue.",
+    "points": [
+      {
+        "title": "Our own capital only",
+        "text": "We do not manage money for third parties, and we do not borrow others' risk."
+      },
+      {
+        "title": "Rules for the exit",
+        "text": "When a position leaves is decided by rules, not by hope."
+      },
+      {
+        "title": "A pause after losses",
+        "text": "When a stop point is reached, we step back and review before trading on."
+      }
+    ]
+  }
+]
