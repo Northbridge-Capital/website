@@ -22,6 +22,18 @@
         "title": "Reviewed on a rhythm",
         "text": "We hold regular reviews and change the playbook deliberately, not on impulse."
       }
+    ],
+    "video": "disciplined-strategy",
+    "feature": "disciplined-strategy-feature",
+    "notes": [
+      {
+        "label": "Our rule",
+        "text": "If a rule can't be written down, we don't trade on it."
+      },
+      {
+        "label": "Our habit",
+        "text": "After a losing streak we ask whether the rule failed or only the luck did."
+      }
     ]
   },
   {
@@ -47,6 +59,18 @@
         "title": "Let a colleague disagree",
         "text": "Someone else tries to prove the idea wrong before any capital is used."
       }
+    ],
+    "video": "deep-research",
+    "feature": "deep-research-feature",
+    "notes": [
+      {
+        "label": "Our test",
+        "text": "An idea is ready when a colleague has tried to prove it wrong and couldn't."
+      },
+      {
+        "label": "Our source",
+        "text": "We read the original filing before anyone's summary of it."
+      }
     ]
   },
   {
@@ -71,6 +95,18 @@
       {
         "title": "A pause after losses",
         "text": "When a stop point is reached, we step back and review before trading on."
+      }
+    ],
+    "video": "capital-discipline",
+    "feature": "capital-discipline-feature",
+    "notes": [
+      {
+        "label": "Our limit",
+        "text": "A trade only happens once its worst case is one we accept."
+      },
+      {
+        "label": "Our stake",
+        "text": "It is our own capital, so we are the first to feel a mistake."
       }
     ]
   }

@@ -1,20 +1,18 @@
 /* ---------- What we do: offer cards that flip over ---------- */
 /* 4. disciplined risk management: a 3D implied-volatility surface, the kind quants plot: strike across, time to maturity into the
       distance, volatility as height. At rest it is a flat grid. While the card is hovered the surface rises from the front to the back
-      into its smile and hills, then a marker glides over the ridges and settles on the highest peak, ringed.
-      site.js (part 6) morphs each mesh cell from its flat shape and shade (d and the first number of data-g) to its risen shape (data-to and the second). */
+      into its smile and hills. site.js (part 6) morphs each mesh cell from its flat shape and shade (d and the first number of data-g)
+      to its risen shape (data-to and the second). */
 .ic-vol .floor{fill:none;stroke:var(--ink);stroke-opacity:.28;stroke-width:.8;stroke-linejoin:round}
 .ic-vol .quad{stroke:var(--ink);stroke-opacity:.5;stroke-width:.55;stroke-linejoin:round}
-.ic-vol .ring{fill:none;stroke:var(--ink);stroke-width:.6;opacity:0}
-.ic-vol .atm{fill:var(--ink);stroke:var(--ic-bg);stroke-width:1;opacity:0}
 .offer{position:relative;border-radius:var(--radius);perspective:1100px;cursor:pointer;transition:transform .35s var(--spring),box-shadow .35s ease}
 .offer:hover{transform:translateY(-3px) scale(1.01);box-shadow:0 8px 18px -10px rgba(11,11,11,.22);z-index:2}
 .flip{display:grid;transform-style:preserve-3d;transition:transform .8s var(--ease)}
 .offer.flipped .flip{transform:rotateY(180deg)}
-.face{grid-area:1/1;position:relative;display:flex;flex-direction:column;gap:16px;min-height:340px;padding:20px;border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--tone-light);backface-visibility:hidden;transition:border-color .3s}
-.offer:hover .front{border-color:var(--ink)}
+.face{grid-area:1/1;position:relative;display:flex;flex-direction:column;gap:16px;min-height:340px;padding:20px;border-radius:var(--radius);background:var(--tone-grey);backface-visibility:hidden;transition:border-color .3s}
+.offer:hover .front{background:var(--tone-stone)}
 .offer-top{display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:1px solid var(--line-strong);color:var(--mute)}
-.tag{padding:1px 8px;border:1px solid var(--line-strong);border-radius:3px}
+.tag{padding:1px 8px;border-radius:3px;background:var(--tone-light)}
 .offer h3{font-size:clamp(24px,2.1vw,30px);line-height:1.1;letter-spacing:-.02em;font-weight:500}
 .offer p{color:var(--mute);line-height:1.45}
 
@@ -36,7 +34,7 @@
 .flip-back:hover{background:#fff;color:var(--ink)}
 
 /* icons animate when the card is hovered (idea borrowed from the Halfspace offerings) */
-.pic{--ic-fill:#BDBDB6;--ic-bg:#F4F4F1;margin-top:auto;position:relative;width:96px;height:64px;overflow:hidden;border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--ic-bg)}
+.pic{--ic-fill:#BDBDB6;--ic-bg:#F4F4F1;margin-top:auto;position:relative;width:96px;height:64px;overflow:hidden;border-radius:var(--radius);background:var(--ic-bg)}
 .pic *{transition-duration:.3s}
 .pic .axis{stroke:var(--ink);stroke-opacity:.35;stroke-width:1}
 .pic .ln,.pic .lab{stroke:var(--ink)}

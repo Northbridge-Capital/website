@@ -6,7 +6,7 @@
 .case .glass{z-index:2;transition:transform .5s var(--ease-out),border-color .4s ease,background-color .4s ease}
 .case .glass p{min-height:calc(2 * 1.45em)}
 .case .glass-top{background:linear-gradient(rgba(255,255,255,.9),rgba(255,255,255,.9)) left bottom/0 1px no-repeat;transition:background-size .7s var(--ease)}
-.case>.slot{transition:transform 1s var(--ease-out)}
-.case:hover>.slot{transform:scale(1.05)}
+.case>.slot,.case>.lazy-video{transition:transform 1s var(--ease-out)}
+.case:hover>.slot,.case:hover>.lazy-video{transform:scale(1.05)}
 .case:hover .glass{transform:translateY(-6px);border-color:rgba(255,255,255,.42);background-color:rgba(18,18,18,.52)}
 .case:hover .glass-top{background-size:100% 1px}

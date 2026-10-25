@@ -13,3 +13,8 @@
 .next-label{opacity:.6;margin-bottom:18px}
 .next .arrow{flex:none;font-size:clamp(40px,6vw,96px);line-height:1;font-weight:300;transition:transform .6s var(--ease)}
 .next:hover .arrow,.next:focus-visible .arrow{transform:translateX(14px)}
+/* two glass notes over a feature video, side by side and equal, like the one in "Who we are": a darker foot keeps them readable over bright footage */
+.pmedia::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(0deg,rgba(0,0,0,.66),rgba(0,0,0,0) 62%)}
+.pnotes{position:absolute;z-index:2;inset:auto 20px 20px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.pnotes .glass{position:static;width:auto;padding:14px 18px 16px}
+.pnotes .glass p.glass-note{margin-top:12px;font-size:clamp(16px,1.35vw,18px);line-height:1.4;letter-spacing:-.01em}
