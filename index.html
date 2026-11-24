@@ -1,158 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Northbridge Capital</title>
-		<meta
-			name="description"
-			content="Northbridge Capital is preparing a new public website."
-		/>
-		<style>
-			:root {
-				color-scheme: dark;
-				--bg: #081018;
-				--bg-2: #0f1c2b;
-				--panel: rgba(10, 18, 28, 0.72);
-				--panel-border: rgba(255, 255, 255, 0.12);
-				--text: #f4f1ea;
-				--muted: rgba(244, 241, 234, 0.72);
-				--accent: #c6a96c;
-				--accent-soft: rgba(198, 169, 108, 0.2);
-			}
-
-			* {
-				box-sizing: border-box;
-			}
-
-			html,
-			body {
-				margin: 0;
-				min-height: 100%;
-			}
-
-			body {
-				font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-				background:
-					radial-gradient(circle at top, rgba(198, 169, 108, 0.14), transparent 35%),
-					linear-gradient(135deg, var(--bg), var(--bg-2));
-				color: var(--text);
-			}
-
-			body::before {
-				content: "";
-				position: fixed;
-				inset: 0;
-				pointer-events: none;
-				background-image:
-					linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-					linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-				background-size: 72px 72px;
-				mask-image: radial-gradient(circle at center, black, transparent 88%);
-				opacity: 0.35;
-			}
-
-			main {
-				min-height: 100vh;
-				display: grid;
-				place-items: center;
-				padding: 32px;
-			}
-
-			.card {
-				width: min(760px, 100%);
-				padding: clamp(28px, 5vw, 56px);
-				border: 1px solid var(--panel-border);
-				border-radius: 28px;
-				background: var(--panel);
-				backdrop-filter: blur(16px);
-				box-shadow: 0 30px 100px rgba(0, 0, 0, 0.35);
-			}
-
-			.kicker {
-				margin: 0 0 18px;
-				font-size: 0.8rem;
-				letter-spacing: 0.3em;
-				text-transform: uppercase;
-				color: var(--accent);
-			}
-
-			h1 {
-				margin: 0;
-				font-size: clamp(2.8rem, 8vw, 6rem);
-				line-height: 0.95;
-				font-weight: 600;
-				letter-spacing: -0.04em;
-			}
-
-			.lead {
-				margin: 22px 0 0;
-				max-width: 42rem;
-				font-size: clamp(1.05rem, 2vw, 1.3rem);
-				line-height: 1.7;
-				color: var(--muted);
-			}
-
-			.status {
-				display: inline-flex;
-				align-items: center;
-				gap: 12px;
-				margin-top: 34px;
-				padding: 12px 18px;
-				border: 1px solid var(--panel-border);
-				border-radius: 999px;
-				background: var(--accent-soft);
-				color: var(--text);
-				font-size: 0.95rem;
-			}
-
-			.status::before {
-				content: "";
-				width: 10px;
-				height: 10px;
-				border-radius: 50%;
-				background: var(--accent);
-				box-shadow: 0 0 0 6px rgba(198, 169, 108, 0.15);
-			}
-
-			footer {
-				margin-top: 42px;
-				padding-top: 18px;
-				border-top: 1px solid rgba(255, 255, 255, 0.08);
-				font-size: 0.9rem;
-				color: rgba(244, 241, 234, 0.55);
-			}
-
-			@media (max-width: 640px) {
-				main {
-					padding: 20px;
-				}
-
-				.card {
-					border-radius: 22px;
-				}
-
-				.status {
-					width: 100%;
-					justify-content: center;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<main>
-			<section class="card" aria-labelledby="title">
-				<p class="kicker">Northbridge Capital</p>
-				<h1 id="title">Site coming soon.</h1>
-				<p class="lead">
-					We are rebuilding our public presence. The new website will be live here
-					soon.
-				</p>
-				<div class="status" role="status" aria-live="polite">
-					Preparing a new experience
-				</div>
-				<footer>Thank you for your patience.</footer>
-			</section>
-		</main>
-	</body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Northbridge Capital: Coming soon</title>
+<meta name="description" content="Northbridge Capital is an independent proprietary trading firm. Our new website is coming soon.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Northbridge Capital">
+<meta property="og:title" content="Northbridge Capital: Coming soon">
+<meta property="og:description" content="Northbridge Capital is an independent proprietary trading firm. Our new website is coming soon.">
+<meta property="og:image" content="https://northbridge-capital.com/coming-soon/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0B0B0B">
+<link rel="icon" href="/coming-soon/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/coming-soon/apple-touch-icon.png">
+<link rel="preload" href="/coming-soon/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:300 500;font-display:swap;src:url(/coming-soon/hanken-grotesk-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{--gut:clamp(20px,3.5vw,56px);--gap:16px;--scale:.85;--ease-out:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;zoom:var(--scale)}
+body{margin:0;background:#000;color:#fff;font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:16px;line-height:1.5;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,p{margin:0}
+.wrap{max-width:2000px;margin:0 auto;padding-inline:var(--gut)}
+.g12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);row-gap:var(--gap)}
+.page{position:relative;height:calc(100svh / var(--scale));min-height:560px;overflow:hidden}
+.page::before{content:"";position:absolute;inset:0;z-index:2;background:#000;pointer-events:none;animation:unveil 1.4s ease .1s both}
+.poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,.15) 30%,rgba(0,0,0,.2) 50%,rgba(0,0,0,.78))}
+.topbar{position:absolute;inset:0 0 auto 0;z-index:3;display:flex;align-items:center;height:72px}
+.brand{display:inline-flex;align-items:baseline;gap:14px;font-size:22px;font-weight:500;letter-spacing:-.02em;color:#fff;text-decoration:none}
+.brand-name{white-space:nowrap}
+.tm{margin-left:2px;font-size:.42em;font-weight:400;line-height:1;vertical-align:top;position:relative;top:.35em;opacity:.8;letter-spacing:0}
+.brand-div{position:relative;top:.023em;flex:none;width:1px;height:.7em;background:rgba(255,255,255,.4)}
+.brand-sym{position:relative;top:.023em;display:block;flex:none;width:.7em;height:.7em}
+.brand-sym i{position:absolute;inset:0;display:block}
+.brand-sym i:nth-child(1){background:#8A8A86;clip-path:polygon(0.00% 13.64%,0.00% 100.00%,86.36% 100.00%,86.36% 100.00%)}
+.brand-sym i:nth-child(2){background:#fff;clip-path:polygon(13.64% 0.00%,100.00% 0.00%,100.00% 86.36%,100.00% 86.36%)}
+.foot{position:absolute;inset:auto 0 0 0;z-index:3;padding-bottom:var(--gut);align-items:last baseline}
+h1{grid-column:1/-1;font-size:clamp(56px,10.5vw,176px);line-height:.92;letter-spacing:-.045em;font-weight:300;text-wrap:balance}
+h1 span{display:block}
+h1 span+span{margin-left:-.018em}
+.note{grid-column:1/-1;font-size:clamp(18px,1.5vw,21px);line-height:1.45;font-weight:300;position:relative;margin-top:calc(var(--gap)*1.5)}
+.note::before,.note::after{content:"";position:absolute;top:-.4em;bottom:-.4em;width:7px;border:1px solid currentColor}
+.note::before{right:100%;margin-right:7px;border-right:0}
+.note::after{left:100%;margin-left:7px;border-left:0}
+@media (min-width:900px){.note{grid-column:8/13;margin-top:0}h1{grid-column:1/8}}
+.in{animation:up .9s var(--ease-out) both}
+.d2{animation-delay:.3s}.d3{animation-delay:.5s}
+@keyframes up{from{opacity:0;translate:0 24px}}
+@keyframes unveil{to{opacity:0}}
+@media (prefers-reduced-motion:reduce){.in,.page::before{animation:none!important}.page::before{opacity:0}}
+</style>
+</head>
+<body>
+<div class="page">
+  <img class="poster" src="/coming-soon/hero-poster.jpg" alt="" width="1920" height="1080" fetchpriority="high">
+  <div class="shade"></div>
+  <header class="topbar wrap">
+    <a class="brand" href="/" aria-label="Northbridge Capital"><span class="brand-name">Northbridge Capital<sup class="tm" aria-hidden="true">™</sup></span><span class="brand-div" aria-hidden="true"></span><span class="brand-sym" aria-hidden="true"><i></i><i></i></span></a>
+  </header>
+  <main class="foot wrap g12">
+    <h1 class="in d2"><span>Coming</span><span>soon.</span></h1>
+    <p class="note in d3">Northbridge Capital is an independent proprietary trading firm. We trade our own capital, guided by disciplined strategy, deep research, and rigorous risk management. Our new website is on its way.</p>
+  </main>
+</div>
+</body>
 </html>
