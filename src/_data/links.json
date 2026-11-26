@@ -12,7 +12,12 @@
   {
     "name": "GitHub",
     "icon": "github",
-    "href": "#"
+    "href": "https://github.com/Northbridge-Capital"
+  },
+  {
+    "name": "PyPI",
+    "icon": "pypi",
+    "href": "https://pypi.org/user/northbridgeops/"
   },
   {
     "name": "YouTube",
